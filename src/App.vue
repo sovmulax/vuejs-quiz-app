@@ -1,9 +1,15 @@
 <script setup>
-import Card from './components/Card.vue';
-import data from './data/quiz.json'
-import { ref } from 'vue';
+import Card from "./components/Card.vue";
+import data from "./data/quiz.json";
+import { ref, watch } from "vue";
 
-const quiz = ref(data)
+const quiz = ref(data);
+const search = ref("");
+
+watch(search, () => {
+  quiz.value = data.filter(quiz => quiz.name.toLowerCase().includes(search.value.toLowerCase()))
+  console.log("test");
+});
 </script>
 
 <template>
@@ -12,12 +18,13 @@ const quiz = ref(data)
       <img alt="Vue logo" src="./assets/logo.svg" width="75" height="75" />
       <h1>Quiz APP</h1>
       <div>
-      <label for="search">Search </label>
-        <input type="search" name="" id="search" />
+        <label for="search">Search </label>
+        <input v-model="search" type="search" name="" id="search" />
       </div>
-    </div><br>
+    </div>
+    <br />
     <div class="main">
-      <Card v-for="item in quiz" :quiz="item"/>
+      <Card v-for="item in quiz" :quiz="item" :key="item.id" />
     </div>
   </div>
 </template>
@@ -30,7 +37,7 @@ const quiz = ref(data)
   justify-content: space-between;
   padding: 1rem;
 }
-input[type="search"]{
+input[type="search"] {
   width: 250px;
   height: 35px;
   background-color: hsl(0, 0%, 40%);
@@ -39,12 +46,12 @@ input[type="search"]{
   color: white;
 }
 
-input[type="search"]::after{
+input[type="search"]::after {
   border: transparent;
   text-decoration: none;
 }
 
-.main{
+.main {
   display: flex;
   flex-wrap: wrap;
   padding: 2rem;
