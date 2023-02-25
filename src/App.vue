@@ -1,5 +1,9 @@
 <script setup>
+import Card from './components/Card.vue';
+import data from './data/quiz.json'
+import { ref } from 'vue';
 
+const quiz = ref(data)
 </script>
 
 <template>
@@ -11,9 +15,10 @@
       <label for="search">Search </label>
         <input type="search" name="" id="search" />
       </div>
+    </div><br>
+    <div class="main">
+      <Card v-for="item in quiz" :quiz="item"/>
     </div>
-
-    
   </div>
 </template>
 
@@ -37,5 +42,11 @@ input[type="search"]{
 input[type="search"]::after{
   border: transparent;
   text-decoration: none;
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
 }
 </style>
