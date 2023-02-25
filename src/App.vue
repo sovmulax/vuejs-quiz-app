@@ -1,47 +1,41 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div>
+    <div class="header">
+      <img alt="Vue logo" src="./assets/logo.svg" width="75" height="75" />
+      <h1>Quiz APP</h1>
+      <div>
+      <label for="search">Search </label>
+        <input type="search" name="" id="search" />
+      </div>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+input[type="search"]{
+  width: 250px;
+  height: 35px;
+  background-color: hsl(0, 0%, 40%);
+  border: transparent;
+  border-radius: 8px;
+  color: white;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+input[type="search"]::after{
+  border: transparent;
+  text-decoration: none;
 }
 </style>
