@@ -6,26 +6,29 @@ import { ref } from "vue";
 const route = useRoute();
 const id = route.params;
 
-let detail = ref();
-detail = data.filter((data) => data.id == id.id);
+//let detail = ref();
+const detail = data.find((data) => data.id == id.id);
 
-console.log(detail[0].id);
 </script>
 
 <template>
-  <div class="main">
-    <img :src="detail[0].img" />
+  <div v-if="detail" class="main">
+    <img :src="detail.img" />
     <div class="divider"></div>
     <div class="description">
-      <h1 class="green">{{detail[0].name}}</h1>
-      <h2>{{detail[0].img}}</h2>
-      <h2>Nombre de Question : {{detail[0].questions.length}}</h2>
+      <h1 class="green">{{detail.name}}</h1>
+      <h2>{{detail.img}}</h2>
+      <h2>Nombre de Question : {{detail.questions.length}}</h2>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio, voluptate <br>
         dignissimos? Exercitationem expedita sit obcaecati cumque consectetur ad mollitia <br>
         maiores doloribus amet. Delectus fugit voluptatem quia ratione voluptas ipsum vel? 
       </p>
     </div>
+  </div>
+
+  <div v-else class="main">
+    <h1 class="green">404 ERREUR</h1>
   </div>
 </template>
 

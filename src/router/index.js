@@ -13,7 +13,13 @@ const router = createRouter({
         {
             path: '/quiz/:id',
             name: 'details',
-            component: Details
+            component: Details,
+            // children: [
+            //     {
+            //         path: "otherdetails",
+            //         component: Details
+            //     }
+            // ]
         }
     ]
 })
