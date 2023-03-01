@@ -18,7 +18,7 @@ watch(search, () => {
   <div>
     <div class="header">
       <img alt="Vue logo" src="../assets/logo.svg" width="75" height="75" />
-      <h1>Quiz APP</h1>
+      <h1>Quiz AP</h1>
       <div>
         <label for="search">Search </label>
         <input v-model="search" type="search" name="" id="search" />
