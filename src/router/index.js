@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AllQuiz from '../views/AllQuiz.vue'
 import Details from '../views/Details.vue'
+import ERROR404 from '../views/404.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,15 @@ const router = createRouter({
             //         component: Details
             //     }
             // ]
+        },
+        {
+            path:'/test',
+            redirect: '/'
+        },
+        {
+            path: '/:catchall(.*)*',
+            name: 'not found',
+            component: ERROR404
         }
     ]
 })
